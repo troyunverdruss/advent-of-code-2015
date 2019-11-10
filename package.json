@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "@types/node": "^12.12.7",
+    "ts-node": "^8.4.1",
     "typescript": "^3.7.2"
+  },
+  "name": "advent-of-code-2015",
+  "version": "1.0.0",
+  "description": "solutions to aoc2015",
+  "main": "index.js",
+  "repository": "git@github.com:troyunverdruss/advent-of-code-2015.git",
+  "author": "Troy Unverdruss <troy@unverdruss.net>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc --build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "echo blah",
+    "d": "yarn build && node src/dayRunner"
   }
 }
