@@ -20,8 +20,9 @@
   "scripts": {
     "build": "tsc --build",
     "watch": "tsc -w",
+    "clean": "rm -rf out/*",
     "test": "jest",
-    "d": "node out/dayRunner"
+    "d": "node out/src/dayRunner"
   },
   "jest": {
     "preset": "ts-jest",
