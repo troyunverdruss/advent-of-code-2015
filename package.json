@@ -6,7 +6,6 @@
     "@types/node": "^12.12.7",
     "jest": "^24.9.0",
     "md5": "^2.2.1",
-    "sleep": "^6.1.0",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.7.2"
@@ -23,11 +22,10 @@
     "build": "tsc --build",
     "watch": "tsc -w",
     "clean": "rm -rf out/*",
-    "test": "jest",
+    "test": "jest out/test/",
     "d": "node out/src/dayRunner"
   },
   "jest": {
-    "preset": "ts-jest",
-    "verbose": true
+    "preset": "ts-jest"
   }
 }
