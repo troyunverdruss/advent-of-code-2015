@@ -1,7 +1,7 @@
 import md5 from "md5";
 
 export function findFirst(seed: string, zeroCount: number): number {
-  var n = 0;
+  let n = 0;
 
   while (true) {
     n += 1;

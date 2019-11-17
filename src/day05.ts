@@ -6,10 +6,10 @@ export enum Kind {
 }
 
 export function computeKindPart1(input: string): Kind {
-  var last = "";
-  var illegalChars = false;
-  var vowels = 0;
-  var double = false;
+  let last = "";
+  let illegalChars = false;
+  let vowels = 0;
+  let double = false;
 
   input.split("").forEach(char => {
     if (["ab", "cd", "pq", "xy"].includes(last + char)) illegalChars = true;
@@ -23,10 +23,10 @@ export function computeKindPart1(input: string): Kind {
 }
 
 export function computeKindPart2(input: string): Kind {
-  var pairRepeats = false;
-  var sandwich = false;
+  let pairRepeats = false;
+  let sandwich = false;
 
-  for (const [index, val] of input.split("").entries()) {
+  for (let [index, val] of input.split("").entries()) {
     if (index > 0) {
       const pair = input[index - 1] + val;
       if (input.split(pair).length > 2) pairRepeats = true;

@@ -22,7 +22,7 @@
     "build": "tsc --build",
     "watch": "tsc -w",
     "clean": "rm -rf out/*",
-    "test": "jest out/test/",
+    "test": "jest --rootDir out/test/",
     "d": "node out/src/dayRunner"
   },
   "jest": {

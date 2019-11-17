@@ -21,7 +21,7 @@ export function performVisits(
   initialSeen: Set<string>
 ): Set<string> {
   const seen = new Set(initialSeen);
-  var loc = new Point(0, 0);
+  let loc = new Point(0, 0);
   seen.add(loc.toString());
 
   data.split("").forEach(char => {
@@ -48,7 +48,7 @@ export function splitInput(data: string): string[] {
   const santa = [];
   const roboSanta = [];
 
-  for (const [index, val] of data.split("").entries()) {
+  for (let [index, val] of data.split("").entries()) {
     if (index % 2 == 0) {
       santa.push(val);
     } else {

@@ -40,3 +40,11 @@ test("sets work with points?", () => {
   s.add(new Point(2, 2).toString());
   expect(s.size).toBe(2);
 });
+
+test("sets work with tuples?", () => {
+  const s = new Set();
+  s.add([1, 2].toString());
+  s.add([1, 2].toString());
+  s.add([2, 2].toString());
+  expect(s.size).toBe(2);
+});
