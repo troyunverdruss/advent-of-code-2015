@@ -48,7 +48,7 @@ export function splitInput(data: string): string[] {
   const santa = [];
   const roboSanta = [];
 
-  for (let [index, val] of data.split("").entries()) {
+  for (const [index, val] of data.split("").entries()) {
     if (index % 2 == 0) {
       santa.push(val);
     } else {

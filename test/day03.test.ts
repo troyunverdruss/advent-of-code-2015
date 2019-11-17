@@ -1,4 +1,4 @@
-import { Point, part1 } from "../src/day03";
+import { Point, performVisits } from "../src/day03";
 
 test("points equal", () => {
   const a = new Point(1, 2);
@@ -9,19 +9,19 @@ test("points equal", () => {
 
 test("example 1", () => {
   const data = ">";
-  const count = part1(data);
+  const count = performVisits(data, new Set()).size;
   expect(count).toBe(2);
 });
 
 test("example 2", () => {
   const data = "^>v<";
-  const count = part1(data);
+  const count = performVisits(data, new Set()).size;
   expect(count).toBe(4);
 });
 
 test("example 3", () => {
   const data = "^v^v^v^v^v";
-  const count = part1(data);
+  const count = performVisits(data, new Set()).size;
   expect(count).toBe(2);
 });
 
