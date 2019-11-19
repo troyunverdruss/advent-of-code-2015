@@ -14,6 +14,10 @@ export class Point {
   public toString() {
     return `${this.x} ${this.y}`;
   }
+
+  public valueOf() {
+    return this.toString();
+  }
 }
 
 export function performVisits(

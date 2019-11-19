@@ -14,6 +14,25 @@ class Wire {
   }
 }
 
+class Operators {
+  static lookup = new Map([
+    ["NOT", (a: number) => ~a],
+    ["AND", (a: number, b: number) => a & b],
+    ["OR", (a: number, b: number) => a | b],
+    ["LSHIFT", (a: number, b: number) => a << b],
+    ["RSHIFT", (a: number, b: number) => a >> b]
+  ]);
+
+  static do(oper: string, a: number, b: number) {
+    const f = Operators.lookup.get(oper);
+    if (f) {
+      return f(a, b);
+    }
+
+    throw new TypeError(`Undefined operator: ${oper}`);
+  }
+}
+
 function resolve(wires: Map<string, Wire>, id: string): number {
   if (Wire.numberRegex.test(id)) {
     return Number(id);
@@ -29,26 +48,22 @@ function resolve(wires: Map<string, Wire>, id: string): number {
   if (wire.value) {
     return wire.value;
   }
+
   const tokens = wire.desc.split(" ");
-  if (tokens[0] === "NOT") {
-    wire.value = ~resolve(wires, tokens[1]);
-    return wire.value;
-  } else if (tokens.length == 1) {
+  if (tokens.length == 1) {
     wire.value = resolve(wires, tokens[0]);
     return wire.value;
-  } else if (tokens[1] === "AND") {
-    wire.value = resolve(wires, tokens[0]) & resolve(wires, tokens[2]);
+  } else if (tokens[0] === "NOT") {
+    const a = resolve(wires, tokens[1]);
+    wire.value = Operators.do(tokens[0], a, 0);
     return wire.value;
-  } else if (tokens[1] === "OR") {
-    wire.value = resolve(wires, tokens[0]) | resolve(wires, tokens[2]);
-    return wire.value;
-  } else if (tokens[1] === "LSHIFT") {
-    wire.value = resolve(wires, tokens[0]) << resolve(wires, tokens[2]);
-    return wire.value;
-  } else if (tokens[1] === "RSHIFT") {
-    wire.value = resolve(wires, tokens[0]) >> resolve(wires, tokens[2]);
+  } else if (["AND", "OR", "LSHIFT", "RSHIFT"].includes(tokens[1])) {
+    const a = resolve(wires, tokens[0]);
+    const b = resolve(wires, tokens[2]);
+    wire.value = Operators.do(tokens[1], a, b);
     return wire.value;
   }
+
   throw new TypeError(`Unknown expression: ${wire.desc}`);
 }
 
@@ -60,5 +75,14 @@ loadInput(7)
     wires.set(id, new Wire(desc));
   });
 
-const aValue = resolve(wires, "a");
-console.log(`Part 1: ${aValue}`);
+const part1AValue = resolve(wires, "a");
+console.log(`Part 1: ${part1AValue}`);
+
+[...wires.values()].map(w => (w.value = undefined));
+const b = wires.get("b");
+if (b) {
+  b.value = part1AValue;
+}
+
+const part2AValue = resolve(wires, "a");
+console.log(`Part 2: ${part2AValue}`);
