@@ -14,23 +14,24 @@ class Wire {
   }
 }
 
+type OperatorNames = keyof typeof Operators["lookup"];
+
 class Operators {
-  static lookup = new Map([
-    ["NOT", (a: number) => ~a],
-    ["AND", (a: number, b: number) => a & b],
-    ["OR", (a: number, b: number) => a | b],
-    ["LSHIFT", (a: number, b: number) => a << b],
-    ["RSHIFT", (a: number, b: number) => a >> b]
-  ]);
+  static lookup = {
+    NOT: (a: number) => ~a,
+    AND: (a: number, b: number) => a & b,
+    OR: (a: number, b: number) => a | b,
+    LSHIFT: (a: number, b: number) => a << b,
+    RSHIFT: (a: number, b: number) => a >> b
+  };
 
-  static do(oper: string, a: number, b: number) {
-    const f = Operators.lookup.get(oper);
-    if (f) {
-      return f(a, b);
-    }
-
-    throw new TypeError(`Undefined operator: ${oper}`);
+  static do(oper: OperatorNames, a: number, b: number) {
+    return Operators.lookup[oper](a, b);
   }
+}
+
+function isOperator(arg: string): arg is OperatorNames {
+  return Object.keys(Operators.lookup).includes(arg);
 }
 
 function resolve(wires: Map<string, Wire>, id: string): number {
@@ -57,7 +58,7 @@ function resolve(wires: Map<string, Wire>, id: string): number {
     const a = resolve(wires, tokens[1]);
     wire.value = Operators.do(tokens[0], a, 0);
     return wire.value;
-  } else if (["AND", "OR", "LSHIFT", "RSHIFT"].includes(tokens[1])) {
+  } else if (isOperator(tokens[1])) {
     const a = resolve(wires, tokens[0]);
     const b = resolve(wires, tokens[2]);
     wire.value = Operators.do(tokens[1], a, b);
