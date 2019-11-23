@@ -23,10 +23,7 @@
     "watch": "tsc -w",
     "clean": "rm -rf out/*",
     "test": "jest --rootDir out/test/",
-    "d": "node out/src/dayRunner",
-    "src_res": "find ./src -not -name '*.ts' -exec ditto {} ./out/src \\;",
-    "test_res": "find ./test -not -name '*.ts' -exec ditto {} ./out/test \\;",
-    "res": "yarn src_res && yarn test_res"
+    "d": "node out/src/dayRunner"
   },
   "jest": {
     "preset": "ts-jest"

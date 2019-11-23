@@ -1,5 +1,6 @@
 import {
   part1,
+  computeEncodedCount,
   handleEscapedSlash,
   handleEscapedHex,
   handleEscapedQuote
@@ -12,10 +13,10 @@ test("example double quotes", () => {
     .toString()
     .split(/\r?\n/);
 
-  const [res, char, mem] = part1(lines);
-  expect(char).toBe(2);
-  expect(mem).toBe(0);
-  expect(res).toBe(2);
+  const res = part1(lines);
+  expect(res.codeCount).toBe(2);
+  expect(res.memCount).toBe(0);
+  expect(res.result).toBe(2);
 });
 
 test("normal strings", () => {
@@ -24,10 +25,10 @@ test("normal strings", () => {
     .toString()
     .split(/\r?\n/);
 
-  const [res, char, mem] = part1(lines);
-  expect(char).toBe(8);
-  expect(mem).toBe(4);
-  expect(res).toBe(4);
+  const res = part1(lines);
+  expect(res.codeCount).toBe(8);
+  expect(res.memCount).toBe(4);
+  expect(res.result).toBe(4);
 });
 
 test("with escaped slashes", () => {
@@ -36,10 +37,10 @@ test("with escaped slashes", () => {
     .toString()
     .split(/\r?\n/);
 
-  const [res, char, mem] = part1(lines);
-  expect(char).toBe(4);
-  expect(mem).toBe(1);
-  expect(res).toBe(3);
+  const res = part1(lines);
+  expect(res.codeCount).toBe(4);
+  expect(res.memCount).toBe(1);
+  expect(res.result).toBe(3);
 });
 
 test("with escaped quotes", () => {
@@ -48,10 +49,10 @@ test("with escaped quotes", () => {
     .toString()
     .split(/\r?\n/);
 
-  const [res, char, mem] = part1(lines);
-  expect(char).toBe(4);
-  expect(mem).toBe(1);
-  expect(res).toBe(3);
+  const res = part1(lines);
+  expect(res.codeCount).toBe(4);
+  expect(res.memCount).toBe(1);
+  expect(res.result).toBe(3);
 });
 
 test("with escaped hex", () => {
@@ -60,10 +61,10 @@ test("with escaped hex", () => {
     .toString()
     .split(/\r?\n/);
 
-  const [res, char, mem] = part1(lines);
-  expect(char).toBe(6);
-  expect(mem).toBe(1);
-  expect(res).toBe(5);
+  const res = part1(lines);
+  expect(res.codeCount).toBe(6);
+  expect(res.memCount).toBe(1);
+  expect(res.result).toBe(5);
 });
 
 test("handle escaped slash", () => {
@@ -97,4 +98,49 @@ test("handle escaped hex", () => {
   const r = handleEscapedHex(lines[0].split(""), 1);
   expect(r.index).toBe(5);
   expect(r.memChars).toBe(1);
+});
+
+test("part 2, example 1", () => {
+  const lines = fs
+    .readFileSync("test_inputs/day08/double-quotes")
+    .toString()
+    .split(/\r?\n/);
+
+  expect(computeEncodedCount(lines)).toBe(6);
+});
+
+test("part 2, example 2", () => {
+  const lines = fs
+    .readFileSync("test_inputs/day08/part2-example2")
+    .toString()
+    .split(/\r?\n/);
+
+  expect(computeEncodedCount(lines)).toBe(9);
+});
+
+test("part 2, example 3", () => {
+  const lines = fs
+    .readFileSync("test_inputs/day08/part2-example3")
+    .toString()
+    .split(/\r?\n/);
+
+  expect(computeEncodedCount(lines)).toBe(16);
+});
+
+test("part 2, example 4", () => {
+  const lines = fs
+    .readFileSync("test_inputs/day08/part2-example4")
+    .toString()
+    .split(/\r?\n/);
+
+  expect(computeEncodedCount(lines)).toBe(11);
+});
+
+test("part 2, simple strings", () => {
+  const lines = fs
+    .readFileSync("test_inputs/day08/simple-strings")
+    .toString()
+    .split(/\r?\n/);
+
+  expect(computeEncodedCount(lines)).toBe(16);
 });
