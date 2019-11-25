@@ -21,12 +21,12 @@ function findNumbers(results: number[], arg: any, ignoreRed: boolean) {
 const rawData = loadInput(12)[0];
 const js = JSON.parse(rawData);
 
-const part1Results = [];
+const part1Results: number[] = [];
 findNumbers(part1Results, js, false);
 const sum1 = part1Results.reduce((a, b) => a + b);
 console.log(`Part 1: ${sum1}`);
 
-const part2Results = [];
+const part2Results: number[] = [];
 findNumbers(part2Results, js, true);
 const sum2 = part2Results.reduce((a, b) => a + b);
 console.log(`Part 2: ${sum2}`);
