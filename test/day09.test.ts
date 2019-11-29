@@ -1,3 +1,4 @@
+import { alg } from "graphlib";
 import { createGraph, findShortestPath, findLongestPath } from "../src/day09";
 
 test("Part 1 example", () => {
