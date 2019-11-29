@@ -1,4 +1,4 @@
-import { Graph } from "graphlib";
+import { Graph, alg } from "graphlib";
 import { loadInput } from "./utils";
 
 import * as itertools from "itertools";
