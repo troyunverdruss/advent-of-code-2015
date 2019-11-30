@@ -3439,6 +3439,11 @@ ts-node@^8.4.1:
     source-map-support "^0.5.6"
     yn "^3.0.0"
 
+ts-priority-queue@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ts-priority-queue/-/ts-priority-queue-0.1.1.tgz#557be9c76e4b86c0da3c0a17911543805a899fa6"
+  integrity sha512-jNwbk4ItfTHVopnlQ/Z7UUlbF1TNsdXS2cb1W8kI6lm8UauIjs8CYSOEh1E/yrIEhl+HVFUMp60ma6fKuvBhBQ==
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
