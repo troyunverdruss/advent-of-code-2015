@@ -284,7 +284,7 @@ Modifiers.init(ingredients.length);
 
 // This is how we'll sort the priority queue for part 1. in order by score.
 const part1FitnessFunc = (a: StateWithScore, b: StateWithScore) =>
-  a.score - b.score;
+  b.score - a.score;
 
 const part1 = findOptimalSolution(ingredients, part1FitnessFunc, false);
 console.log(`Part 1: ${part1}`);
