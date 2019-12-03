@@ -12,6 +12,8 @@ export function findFirst(seed: string, zeroCount: number): number {
   }
 }
 
-const input = "yzbqklnj";
-console.log(`Part 1: ${findFirst(input, 5)}`);
-console.log(`Part 2: ${findFirst(input, 6)}`);
+if (require.main === module) {
+  const input = "yzbqklnj";
+  console.log(`Part 1: ${findFirst(input, 5)}`);
+  console.log(`Part 2: ${findFirst(input, 6)}`);
+}

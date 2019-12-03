@@ -22,8 +22,10 @@ export function compute(lines: string[]): number[] {
   return [totalPaper, totalRibbon];
 }
 
-const lines = loadInput(2).filter(l => l != "");
-const [paper, ribbon] = compute(lines);
+if (require.main === module) {
+  const lines = loadInput(2).filter(l => l != "");
+  const [paper, ribbon] = compute(lines);
 
-console.log(`Part 1: ${paper}`);
-console.log(`Part 2: ${ribbon}`);
+  console.log(`Part 1: ${paper}`);
+  console.log(`Part 2: ${ribbon}`);
+}

@@ -77,11 +77,14 @@ function addMe(
 
   return input;
 }
-const lines = loadInput(13).filter(l => l != "");
-const input = parseInput(lines);
 
-console.log(`Part 1: ${solve(input)}`);
+if (require.main === module) {
+  const lines = loadInput(13).filter(l => l != "");
+  const input = parseInput(lines);
 
-const inputWithMe = addMe(parseInput(lines));
+  console.log(`Part 1: ${solve(input)}`);
 
-console.log(`Part 2: ${solve(inputWithMe)}`);
+  const inputWithMe = addMe(parseInput(lines));
+
+  console.log(`Part 2: ${solve(inputWithMe)}`);
+}

@@ -62,10 +62,12 @@ export function splitInput(data: string): string[] {
   return [santa.join(""), roboSanta.join("")];
 }
 
-const count = performVisits(data, new Set()).size;
-console.log(`Part 1: ${count}`);
+if (require.main === module) {
+  const count = performVisits(data, new Set()).size;
+  console.log(`Part 1: ${count}`);
 
-const [santaPath, roboSantaPath] = splitInput(data);
-const santaSeen = performVisits(santaPath, new Set());
-const allSeen = performVisits(roboSantaPath, santaSeen);
-console.log(`Part 2: ${allSeen.size}`);
+  const [santaPath, roboSantaPath] = splitInput(data);
+  const santaSeen = performVisits(santaPath, new Set());
+  const allSeen = performVisits(roboSantaPath, santaSeen);
+  console.log(`Part 2: ${allSeen.size}`);
+}

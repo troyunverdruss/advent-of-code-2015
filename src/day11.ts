@@ -92,9 +92,11 @@ export function computeNextPassword(input: string): string {
   return current.join("");
 }
 
-const input = "cqjxjnds";
-const part1 = computeNextPassword(input);
-console.log(`Part 1: ${part1}`);
+if (require.main === module) {
+  const input = "cqjxjnds";
+  const part1 = computeNextPassword(input);
+  console.log(`Part 1: ${part1}`);
 
-const part2 = computeNextPassword(part1);
-console.log(`Part 2: ${part2}`);
+  const part2 = computeNextPassword(part1);
+  console.log(`Part 2: ${part2}`);
+}

@@ -78,8 +78,10 @@ export function part2(reindeer: Reindeer[], time: number): number {
   return Math.max(...scores.values());
 }
 
-const lines = loadInput(14).filter(l => l != "");
-const input = parseInput(lines);
+if (require.main === module) {
+  const lines = loadInput(14).filter(l => l != "");
+  const input = parseInput(lines);
 
-console.log(`Part 1: ${part1(input, 2503)}`);
-console.log(`Part 2: ${part2(input, 2503)}`);
+  console.log(`Part 1: ${part1(input, 2503)}`);
+  console.log(`Part 2: ${part2(input, 2503)}`);
+}

@@ -153,10 +153,12 @@ function part2(sues: AuntSue[]): number {
   return result;
 }
 
-const lines = loadInput(16).filter(l => l != "");
-const sues = parseInput(lines);
-const sueNumber = part1(sues);
-console.log(`Part 1, Sue's number: ${sueNumber}`);
+if (require.main === module) {
+  const lines = loadInput(16).filter(l => l != "");
+  const sues = parseInput(lines);
+  const sueNumber = part1(sues);
+  console.log(`Part 1, Sue's number: ${sueNumber}`);
 
-const sueNumber2 = part2(sues);
-console.log(`Part 2, Sue's number: ${sueNumber2}`);
+  const sueNumber2 = part2(sues);
+  console.log(`Part 2, Sue's number: ${sueNumber2}`);
+}

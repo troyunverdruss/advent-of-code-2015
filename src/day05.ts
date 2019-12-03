@@ -39,13 +39,15 @@ export function computeKindPart2(input: string): Kind {
   return pairRepeats && sandwich ? Kind.NICE : Kind.NAUGHTY;
 }
 
-const lines = loadInput(5);
+if (require.main === module) {
+  const lines = loadInput(5);
 
-const part1NiceCount = lines
-  .map(l => computeKindPart1(l))
-  .filter(k => k === Kind.NICE).length;
-console.log(`Part 1: ${part1NiceCount}`);
+  const part1NiceCount = lines
+    .map(l => computeKindPart1(l))
+    .filter(k => k === Kind.NICE).length;
+  console.log(`Part 1: ${part1NiceCount}`);
 
-const part2NiceCount = lines.map(computeKindPart2).filter(k => k == Kind.NICE)
-  .length;
-console.log(`Part 2: ${part2NiceCount}`);
+  const part2NiceCount = lines.map(computeKindPart2).filter(k => k == Kind.NICE)
+    .length;
+  console.log(`Part 2: ${part2NiceCount}`);
+}
