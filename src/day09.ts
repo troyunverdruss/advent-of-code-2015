@@ -60,8 +60,10 @@ export function findLongestPath(graph: Graph): number {
   return maxPathLength;
 }
 
-const lines = loadInput(9).filter(l => l !== "");
-const graph = createGraph(lines);
+if (require.main === module) {
+  const lines = loadInput(9).filter(l => l !== "");
+  const graph = createGraph(lines);
 
-console.log(`Part 1: ${findShortestPath(graph)}`);
-console.log(`Part 2: ${findLongestPath(graph)}`);
+  console.log(`Part 1: ${findShortestPath(graph)}`);
+  console.log(`Part 2: ${findLongestPath(graph)}`);
+}

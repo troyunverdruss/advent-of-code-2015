@@ -76,26 +76,28 @@ instructions.forEach(inst => {
   }
 });
 
-const countOn = [...part1Grid.values()].filter(v => v === true).length;
-console.log(`Part 1: ${countOn}`);
+if (require.main === module) {
+  const countOn = [...part1Grid.values()].filter(v => v === true).length;
+  console.log(`Part 1: ${countOn}`);
 
-// Part 2
-const part2Grid = new Map();
-for (let x = 0; x < 1000; x++) {
-  for (let y = 0; y < 1000; y++) {
-    part2Grid.set([x, y].toString(), new Light());
-  }
-}
-
-instructions.forEach(inst => {
-  for (let x = inst.start[0]; x <= inst.end[0]; x++) {
-    for (let y = inst.start[1]; y <= inst.end[1]; y++) {
-      part2Grid.get([x, y].toString()).change(inst.cmd);
+  // Part 2
+  const part2Grid = new Map();
+  for (let x = 0; x < 1000; x++) {
+    for (let y = 0; y < 1000; y++) {
+      part2Grid.set([x, y].toString(), new Light());
     }
   }
-});
 
-const brightness = [...part2Grid.values()]
-  .map(l => l.brightness)
-  .reduce((total, num) => total + num);
-console.log(`Part 2: ${brightness}`);
+  instructions.forEach(inst => {
+    for (let x = inst.start[0]; x <= inst.end[0]; x++) {
+      for (let y = inst.start[1]; y <= inst.end[1]; y++) {
+        part2Grid.get([x, y].toString()).change(inst.cmd);
+      }
+    }
+  });
+
+  const brightness = [...part2Grid.values()]
+    .map(l => l.brightness)
+    .reduce((total, num) => total + num);
+  console.log(`Part 2: ${brightness}`);
+}

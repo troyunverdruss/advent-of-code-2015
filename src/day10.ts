@@ -38,9 +38,11 @@ export function runIterations(input: string, rounds: number): string {
   return numbers.join("");
 }
 
-const input = "1113222113";
-const part1 = runIterations(input, 40);
-console.log(`Part 1: ${part1.length}`);
+if (require.main === module) {
+  const input = "1113222113";
+  const part1 = runIterations(input, 40);
+  console.log(`Part 1: ${part1.length}`);
 
-const part2 = runIterations(input, 50);
-console.log(`Part 1: ${part2.length}`);
+  const part2 = runIterations(input, 50);
+  console.log(`Part 1: ${part2.length}`);
+}

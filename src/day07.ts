@@ -68,22 +68,24 @@ function resolve(wires: Map<string, Wire>, id: string): number {
   throw new TypeError(`Unknown expression: ${wire.desc}`);
 }
 
-const wires = new Map<string, Wire>();
-loadInput(7)
-  .filter(l => l != "")
-  .forEach(l => {
-    const [desc, id] = l.split(" -> ");
-    wires.set(id, new Wire(desc));
-  });
+if (require.main === module) {
+  const wires = new Map<string, Wire>();
+  loadInput(7)
+    .filter(l => l != "")
+    .forEach(l => {
+      const [desc, id] = l.split(" -> ");
+      wires.set(id, new Wire(desc));
+    });
 
-const part1AValue = resolve(wires, "a");
-console.log(`Part 1: ${part1AValue}`);
+  const part1AValue = resolve(wires, "a");
+  console.log(`Part 1: ${part1AValue}`);
 
-[...wires.values()].map(w => (w.value = undefined));
-const b = wires.get("b");
-if (b) {
-  b.value = part1AValue;
+  [...wires.values()].map(w => (w.value = undefined));
+  const b = wires.get("b");
+  if (b) {
+    b.value = part1AValue;
+  }
+
+  const part2AValue = resolve(wires, "a");
+  console.log(`Part 2: ${part2AValue}`);
 }
-
-const part2AValue = resolve(wires, "a");
-console.log(`Part 2: ${part2AValue}`);

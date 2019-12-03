@@ -27,7 +27,7 @@
     "watch": "tsc -w",
     "clean": "rm -rf out/*",
     "test": "jest --rootDir out/test/",
-    "d": "node out/src/dayRunner"
+    "d": "./dayRunner.sh"
   },
   "jest": {
     "preset": "ts-jest",

@@ -97,6 +97,7 @@ export function findOptimalSolution(
   // there you don't want to continue exploring forever outside of that
   // range, or you'll end up searching the entire space
   let bestFound = startScore;
+  let bestRecipe: number[] = [];
   let foundFirst500 = false;
 
   // Now let's get down to work...
@@ -142,6 +143,7 @@ export function findOptimalSolution(
             // And now the simple case where we don't care about 500, just store everything
             // since we're getting warmer with this state and maybe its children are even bette
             bestFound = score;
+            bestRecipe = state;
             open.queue({ score: score, state: state, calories: cals });
           }
         }
@@ -154,7 +156,7 @@ export function findOptimalSolution(
   }
 
   // Debug: If you want to see total iterations needed
-  console.log(`Iterations: ${count}`);
+  console.log(`Iterations: ${count}, Best recipe: ${bestRecipe}`);
   return bestFound;
 }
 
@@ -269,33 +271,35 @@ function parseInput(lines: string[]): Ingredient[] {
   return result;
 }
 
-// Let's do this1 Grab all the input data
-const lines = loadInput(15).filter(l => l != "");
-// Example input if you want to test with that
-// const lines = [
-//   "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8",
-//   "Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"
-// ];
+if (require.main === module) {
+  // Let's do this! Grab all the input data
+  const lines = loadInput(15).filter(l => l != "");
+  // Example input if you want to test with that
+  // const lines = [
+  //   "Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8",
+  //   "Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3"
+  // ];
 
-const ingredients = parseInput(lines);
+  const ingredients = parseInput(lines);
 
-// Now that we know how many ingredients there are, init the modifiers
-Modifiers.init(ingredients.length);
+  // Now that we know how many ingredients there are, init the modifiers
+  Modifiers.init(ingredients.length);
 
-// This is how we'll sort the priority queue for part 1. in order by score.
-const part1FitnessFunc = (a: StateWithScore, b: StateWithScore) =>
-  b.score - a.score;
+  // This is how we'll sort the priority queue for part 1. in order by score.
+  const part1FitnessFunc = (a: StateWithScore, b: StateWithScore) =>
+    b.score - a.score;
 
-const part1 = findOptimalSolution(ingredients, part1FitnessFunc, false);
-console.log(`Part 1: ${part1}`);
+  const part1 = findOptimalSolution(ingredients, part1FitnessFunc, false);
+  console.log(`Part 1: ${part1}`);
 
-// This is how we'll sort the priority queue for part 2, in order by score
-// with score being reduced for being farther away from 500
-const part2FitnessFunc = (a: StateWithScore, b: StateWithScore) => {
-  const aScore = Math.abs(500 - a.calories) * a.score;
-  const bScore = Math.abs(500 - b.calories) * b.score;
-  return aScore - bScore;
-};
+  // This is how we'll sort the priority queue for part 2, in order by score
+  // with score being reduced for being farther away from 500
+  const part2FitnessFunc = (a: StateWithScore, b: StateWithScore) => {
+    const aScore = Math.abs(500 - a.calories) * a.score;
+    const bScore = Math.abs(500 - b.calories) * b.score;
+    return aScore - bScore;
+  };
 
-const part2 = findOptimalSolution(ingredients, part2FitnessFunc, true);
-console.log(`Part 2: ${part2}`);
+  const part2 = findOptimalSolution(ingredients, part2FitnessFunc, true);
+  console.log(`Part 2: ${part2}`);
+}

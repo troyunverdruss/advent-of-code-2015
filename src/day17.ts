@@ -62,13 +62,15 @@ export function countValidCombos(
   return result;
 }
 
-const lines = loadInput(17).filter(l => l != "");
-const jars = parseLines(lines);
-// console.log("jars: ", jars);
-const part1 = countValidCombos(150, [], jars);
-console.log(`Part 1: ${part1.length}`);
+if (require.main === module) {
+  const lines = loadInput(17).filter(l => l != "");
+  const jars = parseLines(lines);
+  // console.log("jars: ", jars);
+  const part1 = countValidCombos(150, [], jars);
+  console.log(`Part 1: ${part1.length}`);
 
-// console.log("=======> Part 2");
-const minRequired = Math.min(...part1.map(s => s.length));
-const solutionsWithMin = part1.filter(s => s.length === minRequired).length;
-console.log(`Part 2: ${solutionsWithMin}`);
+  // console.log("=======> Part 2");
+  const minRequired = Math.min(...part1.map(s => s.length));
+  const solutionsWithMin = part1.filter(s => s.length === minRequired).length;
+  console.log(`Part 2: ${solutionsWithMin}`);
+}

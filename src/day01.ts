@@ -19,5 +19,7 @@ data.split("").forEach(letter => {
   }
 });
 
-console.log("Part 1: " + floor);
-console.log("Part 2: " + negativePosition);
+if (require.main === module) {
+  console.log("Part 1: " + floor);
+  console.log("Part 2: " + negativePosition);
+}

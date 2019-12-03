@@ -120,6 +120,8 @@ export function handleEscapedHex(chars: string[], index: number): CharResult {
   return { memChars: memCount, index: newIndex };
 }
 
-const lines = loadInput(8).filter(l => l !== "");
-console.log(`Part 1: ${part1(lines).result}`);
-console.log(`Part 2: ${computeEncodedCount(lines) - part1(lines).codeCount}`);
+if (require.main === module) {
+  const lines = loadInput(8).filter(l => l !== "");
+  console.log(`Part 1: ${part1(lines).result}`);
+  console.log(`Part 2: ${computeEncodedCount(lines) - part1(lines).codeCount}`);
+}
