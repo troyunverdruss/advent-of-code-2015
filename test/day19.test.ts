@@ -4,7 +4,7 @@ import {
   part2,
   findValidNextStates,
   parseMoleculeString,
-  levenshtein, Replacer
+  levenshtein
 } from '../src/day19';
 
 const lines = ['H => HO', 'H => OH', 'O => HH', 'HOH'];
@@ -134,13 +134,13 @@ test('lev 2', () => {
   expect(d).toBe(6)
 })
 
-test('test replacer', () => {
-  const replacer = new Replacer()
-  const e = replacer.getReplacement('e')
-  const h = replacer.getReplacement('h')
-  const o = replacer.getReplacement('o')
-
-  expect(replacer.getReplacement('e')).toBe(e)
-  expect(replacer.getReplacement('h')).toBe(h)
-  expect(replacer.getReplacement('o')).toBe(o)
-})
+// test('test replacer', () => {
+//   const replacer = new Replacer()
+//   const e = replacer.getReplacement('e')
+//   const h = replacer.getReplacement('h')
+//   const o = replacer.getReplacement('o')
+//
+//   expect(replacer.getReplacement('e')).toBe(e)
+//   expect(replacer.getReplacement('h')).toBe(h)
+//   expect(replacer.getReplacement('o')).toBe(o)
+// })
