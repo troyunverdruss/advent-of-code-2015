@@ -98,11 +98,11 @@
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/runtime@^7.6.0":
-  version "7.7.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
-  integrity sha512-r24eVUUr0QqNZa+qrImUk8fn5SPhHq+IfYvIoIMg0do3GdK9sMdiLKP3GYVVaxpPKORgm8KRKaNTEhAjgIpLMw==
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
   dependencies:
-    regenerator-runtime "^0.13.2"
+    regenerator-runtime "^0.13.4"
 
 "@babel/template@^7.4.0", "@babel/template@^7.7.0":
   version "7.7.0"
@@ -1722,9 +1722,9 @@ istanbul-reports@^2.2.6:
     handlebars "^4.1.2"
 
 itertools@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/itertools/-/itertools-1.5.1.tgz#b2cb4a45f498f4781f79518745531d53de6c1931"
-  integrity sha512-/nfazQRAfnihYrWngI/rdug4+RC44FRRpJYgUpMCUy5EBsHIW7oZzv084WZcX3ydU2vjnOnI41yVOxeFQ0THvQ==
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/itertools/-/itertools-1.6.1.tgz#fda1ee6d7e150888c7a9db1f141924cf868ec68b"
+  integrity sha512-V4/0OGqJNtDatQnRdG1/WH4EmHSOMr/o9Zh58DggeQjsHlCLPJe8KECGjb00uv4lAUGfZw2znBskFMxy+EPdxw==
   dependencies:
     "@babel/runtime" "^7.6.0"
 
@@ -2864,10 +2864,10 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-regenerator-runtime@^0.13.2:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
-  integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
+regenerator-runtime@^0.13.4:
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
